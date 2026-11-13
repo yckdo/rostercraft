@@ -12,11 +12,8 @@ function roundToCents(amount: number): number {
 
 export function monthlyPrice(locations: number, billing: Billing): number {
   const discount = billing === 'annual' ? ANNUAL_DISCOUNT : 0;
-  const atBasePrice = Math.min(locations, LOCATIONS_AT_BASE_PRICE) * BASE_PRICE * (1 - discount);
-  const atVolumePrice = Math.max(locations - LOCATIONS_AT_BASE_PRICE, 0) * VOLUME_PRICE * (1 - discount);
-  const total =
-    locations > LOCATIONS_AT_BASE_PRICE
-      ? (atBasePrice + atVolumePrice) * (1 - discount)
-      : atBasePrice + atVolumePrice;
+  const atBasePrice = Math.min(locations, LOCATIONS_AT_BASE_PRICE) * BASE_PRICE;
+  const atVolumePrice = Math.max(locations - LOCATIONS_AT_BASE_PRICE, 0) * VOLUME_PRICE;
+  const total = (atBasePrice + atVolumePrice) * (1 - discount);
   return roundToCents(total);
 }
