@@ -173,3 +173,10 @@ form .button {
   color: var(--muted);
   padding: 24px 16px;
 }
+
+.environment-banner {
+  padding: 12px 16px;
+  background: #fff3cd;
+  color: #664d03;
+  text-align: center;
+}

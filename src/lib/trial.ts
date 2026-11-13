@@ -26,6 +26,7 @@ export function firstName(fullName: string): string {
   return fullName.trim().split(/\s+/)[0];
 }
 
-export function trialDays(value: string | undefined = import.meta.env.VITE_TRIAL_DAYS): string | undefined {
-  return value;
+export function trialDays(value: string | undefined = import.meta.env.VITE_TRIAL_DAYS): number {
+  const days = Number(value);
+  return Number.isInteger(days) && days >= 7 && days <= 30 ? days : 14;
 }
